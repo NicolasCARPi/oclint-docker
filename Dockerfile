@@ -1,9 +1,8 @@
 # oclint in a docker container
-
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 # don't add the v in front here
-ENV OCLINT_VERSION 0.13
+ENV OCLINT_VERSION 0.14
 
 LABEL org.label-schema.name="oclint" \
     org.label-schema.description="A static source code analysis tool to improve quality and reduce defects for C, C++ and Objective-C" \
@@ -29,6 +28,4 @@ RUN apt-get update && \
 RUN git clone -b v$OCLINT_VERSION https://github.com/oclint/oclint /app && \
     cd /app/oclint-scripts && ./make
 
-RUN ln -sf /app/build/oclint-release/bin/oclint /usr/bin/oclint
-
-ENTRYPOINT ["/usr/bin/oclint"]
+ENTRYPOINT ["/app/build/oclint-release/bin/oclint"]
