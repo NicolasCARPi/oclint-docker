@@ -29,6 +29,6 @@ RUN apt-get update && \
 RUN git clone -b v$OCLINT_VERSION https://github.com/oclint/oclint /app && \
     cd /app/oclint-scripts && ./make
 
-RUN ln -sf /app/build/oclint-$OCLINT_VERSION/bin/oclint /usr/bin/oclint
+RUN ln -sf /app/build/oclint-release/bin/oclint /usr/bin/oclint
 
-CMD ["/usr/bin/oclint"]
+ENTRYPOINT ["/usr/bin/oclint"]
